@@ -12,9 +12,14 @@
   </head>
 
   <body>
+    <%= render 'application/nav' %>
     <%= render 'application/alerts' %>
 
-    <%= yield %>
+    <div class="row">
+      <div class="columns">
+        <%= yield %>
+      </div>
+    </div>
 
   </body>
 </html>
