@@ -1,7 +1,6 @@
 AllCops:
   Exclude:
     - "vendor/**/*"
-    - "config/initializers/devise.rb"
     - "db/schema.rb"
     - "db/migrate/*.rb"
   UseCache: false
