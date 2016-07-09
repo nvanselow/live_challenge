@@ -5,7 +5,6 @@ feature 'sign_up', %{
   I want to sign up
   So that I can start creating live challenges
 } do
-
   # ACCEPTANCE CRITERIA
   # [ ] I must specify a valid email addresses
   # [ ] I must specify a valid password and confirm that password
