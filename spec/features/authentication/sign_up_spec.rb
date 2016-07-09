@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'sign_up', %q{
+feature 'sign_up', %Q{
   As an unauthenticated user
   I want to sign up
   So that I can start creating live challenges
