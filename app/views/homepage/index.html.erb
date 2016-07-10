@@ -5,7 +5,14 @@
 </p>
 
 <% if current_user %>
-  <%= link_to 'Create a Question', new_question_path, class: 'button large' %>
+  <div class="row">
+    <div class="columns small-12 medium-6">
+      <%= link_to 'Create a Question', new_question_path, class: 'button large' %>
+    </div>
+    <div class="columns small-12 medium-6">
+      <%= link_to 'View All Questions', questions_path, class: 'button large' %>
+    </div>
+  </div>
 <% else %>
   <hr>
   <h4>

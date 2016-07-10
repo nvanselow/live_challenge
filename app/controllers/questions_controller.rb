@@ -1,6 +1,10 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @questions = Question.all_for(current_user)
+  end
+
   def show
     @question = Question.find(params[:id])
   end
@@ -11,6 +15,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.user = current_user
 
     if @question.save
       flash[:success] = 'Question created!'
