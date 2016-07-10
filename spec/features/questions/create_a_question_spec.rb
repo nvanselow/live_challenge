@@ -6,11 +6,11 @@ feature 'create a new question', %{
   So that I can send that question to my students
 } do
   # Acceptance Criteria
-  # [ ] User can navigate to the create question form from the homepage
-  # [ ] User can navigate to the create question form from the navbar
-  # [ ] If user enters valid question info into the form, the user sees
+  # [X] User can navigate to the create question form from the homepage
+  # [X] User can navigate to the create question form from the navbar
+  # [X] If user enters valid question info into the form, the user sees
   #     a success message and is taken to the question show page
-  # [ ] If a user enters invalid information, they see an error message with
+  # [X] If a user enters invalid information, they see an error message with
   #     with information about what to fix
   # [ ] The user can enter markdown in the question body text
   # [ ] The user can preview their formatted question as they type
