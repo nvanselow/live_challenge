@@ -7,3 +7,10 @@ def sign_in_as(user)
   expect(page).to have_content('Sign Out')
   expect(page).not_to have_content('Sign In')
 end
+
+def sign_out
+  visit root_path
+  click_link 'Sign Out'
+
+  expect(page).to have_content('Signed out successfully')
+end
