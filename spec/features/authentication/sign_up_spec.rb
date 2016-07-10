@@ -7,12 +7,12 @@ feature 'sign_up', %{
 } do
 
   # ACCEPTANCE CRITERIA
-  # [ ] I must specify a valid email addresses
-  # [ ] I must specify a valid password and confirm that password
-  # [ ] I must specify a valid display name
-  # [ ] If I do not perform the above, I get an error message
-  # [ ] If I specify valid information, I register my account
-  # [ ] Successful registration also results in being authenticated
+  # [X] I must specify a valid email addresses
+  # [X] I must specify a valid password and confirm that password
+  # [X] I must specify a valid display name
+  # [X] If I do not perform the above, I get an error message
+  # [X] If I specify valid information, I register my account
+  # [X] Successful registration also results in being authenticated
 
   let(:user) { FactoryGirl.attributes_for(:user) }
 
@@ -22,7 +22,7 @@ feature 'sign_up', %{
     click_link 'Sign Up'
   end
 
-  scenario 'specifying vlaid and required information' do
+  scenario 'specifying valid and required information' do
     fill_in 'Email', with: user[:email]
     fill_in 'Display Name', with: user[:display_name]
     fill_in 'Password', with: user[:password]
