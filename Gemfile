@@ -9,7 +9,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'foundation-rails'
-gem "carrierwave"
+gem 'carrierwave'
+gem 'redcarpet'
+gem 'capybara-webkit'
 
 group :development, :test do
   gem 'capybara'
@@ -24,6 +26,7 @@ end
 group :test do
   gem 'launchy', require: false
   gem 'coveralls', require: false
+  gem 'database_cleaner'
 end
 
 group :production do
