@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'valid_attribute'
+require_relative 'support/helpers/authentication_helper'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
