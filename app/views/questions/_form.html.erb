@@ -4,14 +4,9 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-
-  <div id='markdown_preview'>
-    <p>
-      Your webbrowser doesn't support markdown previewing. Upgrade your
-      browser for the best experience.
-    </p>
+  <div id="react_question_body">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
   </div>
 
   <%= f.submit 'Save Question', class: 'button' %>

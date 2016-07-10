@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   root 'homepage#index'
 
-  resource :markdown, only: [:create], controller: 'markdown'
+  namespace :api do
+    namespace :v1 do
+      resource :markdown, only: [:create], controller: 'markdown'
+    end
+  end
   resources :questions, only: [:index, :show, :new, :create]
 end

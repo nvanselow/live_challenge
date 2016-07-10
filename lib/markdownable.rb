@@ -1,4 +1,5 @@
 require 'redcarpet'
+require_relative 'renderers/html_with_pygments'
 
 module Markdownable
   OPTIONS = {
@@ -26,6 +27,6 @@ module Markdownable
   end
 
   def markdown
-    @markdown ||= Redcarpet::Markdown.new(renderer, EXTENSIONS)
+    @markdown ||= Redcarpet::Markdown.new(HtmlWithPygments, EXTENSIONS)
   end
 end
