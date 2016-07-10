@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:display_name])
   end
+
+  def authorize_admin
+    if !user_signed_in? || !current_user.admin?
+      flash[:alert] = "You do not have permission to do that."
+      redirect_to root_path
+    end
+  end
 end
