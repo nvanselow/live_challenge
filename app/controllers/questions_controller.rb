@@ -1,6 +1,10 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @questions = Question.all_for(current_user)
+  end
+
   def show
     @question = Question.find(params[:id])
   end

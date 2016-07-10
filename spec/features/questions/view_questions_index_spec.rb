@@ -43,7 +43,7 @@ feature 'view the questions index', %{
     visit root_path
 
     within('nav') do
-      click_link 'View Questions'
+      click_link 'All Questions'
     end
 
     expect_to_have_all_questions(questions)
@@ -65,7 +65,8 @@ feature 'view the questions index', %{
 
     visit questions_path
 
-    expect(page).to have_content('sign in to continue')
+    expect(page).to have_content('You need to sign in or sign up before '\
+                                 'continuing')
     expect(page).not_to have_content(questions[0].title)
   end
 end
