@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Markdown from './Markdown';
+import Markdown from 'react-rich-markdown';
 
 class QuestionBodyInput extends Component {
   constructor(props) {
@@ -19,17 +19,25 @@ class QuestionBodyInput extends Component {
 
 
   render() {
-    return (
-      <div className='markdown-body'>
-        <label htmlFor="question_body">Body</label>
-        <textarea name="question[body]"
-                  id="question_body"
-                  onChange={this.handleChange}
-                  value={ this.state.body }
-                  rows={15} >
-        </textarea>
+    let markdown_options = {
+      'math': false
+    };
 
-        <Markdown text={this.state.body} />
+    return (
+      <div className='markdown-body row'>
+        <div className='columns small-12 medium-6'>
+          <label htmlFor="question_body">Body</label>
+          <textarea name="question[body]"
+                    id="question_body"
+                    onChange={this.handleChange}
+                    value={ this.state.body }
+                    rows={15} >
+          </textarea>
+        </div>
+        <div className='columns hide-for-small-only medium-6'>
+          <p>Preview:</p>
+          <Markdown source={this.state.body} options={markdown_options} />
+        </div>
       </div>
     );
   }
