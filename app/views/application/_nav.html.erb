@@ -7,6 +7,9 @@
   <div class="top-bar-right">
     <ul class="menu">
       <% if current_user %>
+        <% if File.exist?("public/#{current_user.avatar.to_s}") %>
+          <li class="text"><%= image_tag current_user.avatar, class: 'avatar' %></li>
+        <% end %>
         <li><%= link_to current_user.display_name, edit_user_registration_path %></li>
         <li>
           <%= link_to 'Sign Out',
