@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence(:email) { |num| "email_#{num}@mailinator.com" }
     password 'password'
     role 'member'
+    avatar File::open('spec/support/test_avatar.jpeg')
 
     factory :admin do
       role 'admin'
