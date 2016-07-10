@@ -1,5 +1,5 @@
+require 'pry'
 require 'coveralls'
-
 Coveralls.wear!('rails')
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
