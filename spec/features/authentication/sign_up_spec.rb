@@ -19,7 +19,9 @@ feature 'sign_up', %{
   before do
     visit root_path
 
-    click_link 'Sign Up'
+    within('nav') do
+      click_link 'Sign Up'
+    end
   end
 
   scenario 'specifying valid and required information' do

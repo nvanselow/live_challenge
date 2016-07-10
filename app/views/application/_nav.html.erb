@@ -1,7 +1,11 @@
 <nav class="top-bar">
   <div class="top-bar-left">
     <ul class="menu">
-      <li><%= link_to 'Live Challenge', root_path %></li>
+      <li><%= link_to 'Live Challenge', root_path, class: 'logo' %></li>
+
+      <% if current_user %>
+        <li><%= link_to 'Create a Question', new_question_path %></li>
+      <% end %>
     </ul>
   </div>
   <div class="top-bar-right">

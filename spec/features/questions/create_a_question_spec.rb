@@ -29,7 +29,8 @@ feature 'create a new question', %{
 
     visit new_question_path
 
-    expect(page).to have_content('Please sign in to create a question')
+    expect(page).to have_content('You need to sign in or sign up '\
+                                 'before continuing')
   end
 
   scenario 'user navigates to the create question form from the homepage' do

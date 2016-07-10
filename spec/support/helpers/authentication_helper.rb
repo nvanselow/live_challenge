@@ -10,7 +10,10 @@ end
 
 def sign_out
   visit root_path
-  click_link 'Sign Out'
+
+  within('nav') do
+    click_link 'Sign Out'
+  end
 
   expect(page).to have_content('Signed out successfully')
 end

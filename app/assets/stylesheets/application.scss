@@ -1,7 +1,17 @@
 /*
 *= require foundation
 */
+
+/*
+* Fonts
+*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*
+* Styles
+*/
 @import 'foundation_and_overrides';
 @import 'devise_errors';
 @import 'file_upload';
 @import 'avatar';
+@import 'logo';
