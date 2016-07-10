@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'upload a profile photo', %q{
+feature 'upload a profile photo', %{
   As a user
   I want to upload a profile photo
   So it is easier for other users to identify me
