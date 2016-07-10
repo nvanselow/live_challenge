@@ -12,18 +12,5 @@ feature 'markdown is supported in question body', %{
     sign_in_as(user)
   end
 
-  xscenario 'user enters markdown into the body to see a preview' do
-    visit new_question_path
 
-    fill_in('Title', with: question[:title])
-    fill_in('Body', with: question[:body])
-    page.execute_script(%q{
-      var event = new Event('input', { bubbles: true });
-      var element = document.getElementById('question_body');
-      element.dispatchEvent(event);
-    })
-
-    expect(page.html).to include('This is some text for a question I '\
-                                 'want to add. It has <b>markdown</b>.')
-  end
 end
