@@ -8,7 +8,8 @@ feature 'upload a profile photo', %q{
   # ACCEPTANCE CRITERIA
   # [X] I can upload a photo and it appears in the nav bar
   # [X] I get an error message if I try to upload an invalid file type
-  # [ ] Uploading a file is optional
+  # [X] Uploading a file is optional
+  # [ ] User can change their profile picture
 
   let(:user) { FactoryGirl.attributes_for(:user) }
   let(:invalid_photo) { 'spec/support/test_avatar.pdf' }
@@ -31,6 +32,22 @@ feature 'upload a profile photo', %q{
     complete_form_with_photo(nil)
 
     expect(page).to have_content('You have signed up successfully')
+    expect(page).not_to have_css("img[src*='avatar.jpeg']")
+  end
+
+  scenario 'user changes their profile picture' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    click_link(user.display_name)
+
+    attach_file 'Upload an Avatar', 'spec/support/test_avatar2.jpeg'
+    fill_in 'Current Password', with: user.password
+
+    click_button 'Update'
+
+    expect(page).to have_content('Your account has been updated successfully')
+    expect(page).to have_css("img[src*='avatar.jpeg']")
   end
 end
 
