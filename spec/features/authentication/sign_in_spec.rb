@@ -18,7 +18,9 @@ feature 'users signs in', %{
   before do
     visit root_path
 
-    click_link 'Sign In'
+    within('nav') do
+      click_link 'Sign In'
+    end
   end
 
   scenario 'an existing user provides valid email and password' do
