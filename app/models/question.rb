@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
   validates :body, presence: true
 
   def self.all_for(user)
-    if(user)
+    if user
       Question.where(user: user)
     else
       []
