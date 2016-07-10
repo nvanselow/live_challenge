@@ -1,6 +1,6 @@
 Capybara::Webkit.configure do |config|
   # Enable debug mode. Prints a log of everything the driver is doing.
-  config.debug = true
+  config.debug = false
 
   # By default, requests to outside domains (anything besides localhost) will
   # result in a warning. Several methods allow you to change this behavior.
@@ -13,7 +13,8 @@ Capybara::Webkit.configure do |config|
 
   # Allow a specific domain without issuing a warning.
   # config.allow_url("example.com")
-
+  config.allow_url("fonts.googleapis.com")
+  
   # Allow a specific URL and path without issuing a warning.
   # config.allow_url("example.com/some/path")
 
