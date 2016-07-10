@@ -12,6 +12,8 @@ feature 'users signs in', %{
   # [ ] If I am already signed in, I can't sign in again
 
   let(:user) { FactoryGirl.create(:user) }
+  let(:bad_email) { 'bad@email.com' }
+  let(:bad_password) { 'bad_password' }
 
   before do
     visit root_path
@@ -26,5 +28,14 @@ feature 'users signs in', %{
 
     expect(page).to have_content('Signed in successfully')
     expect(page).to have_content('Sign Out')
+  end
+
+  scenario 'a user enters an invalid email and password' do
+    fill_in('Email', with: bad_email)
+    fill_in('Password', with: bad_password)
+    click_button('Sign In')
+
+    expect(page).to have_content('Invalid Email or password')
+    expect(page).not_to have_content('Sign Out')
   end
 end
