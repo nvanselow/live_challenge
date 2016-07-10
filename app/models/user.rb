@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  has_many :questions, dependent: :destroy
+
   validates :display_name, presence: true
 
   def admin?

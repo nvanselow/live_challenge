@@ -8,6 +8,8 @@ describe User, type: :model do
   it { should_not have_valid(:email).when('', nil, 'test', 123, 'user.com') }
   it { should validate_uniqueness_of(:email) }
 
+  it { should have_many(:questions).dependent(:destroy) }
+
   it 'is valid if there is a matching password confirmation for the password' do
     user = FactoryGirl.build(:user)
 
