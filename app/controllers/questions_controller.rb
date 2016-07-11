@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_question_owner, only: [:show, :edit, :update, :destroy]
 
   def index
     @questions = Question.all_for(current_user)
@@ -56,5 +57,14 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:title, :body)
+  end
+
+  def check_question_owner
+    @question = Question.find(params[:id])
+
+    if(@question.user != current_user)
+      flash[:alert] = 'You do not have permission to do that.'
+      redirect_to root_path
+    end
   end
 end
