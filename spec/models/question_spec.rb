@@ -9,6 +9,25 @@ describe Question, type: :model do
 
   it { should belong_to(:user) }
 
+  describe 'add_long_id' do
+    it 'adds a unique long id before the question is created' do
+      question = FactoryGirl.build(:question, long_id: nil)
+      question.save
+
+      expect(question.long_id).not_to be(nil)
+    end
+
+    it 'does not change the id when the question is updated' do
+      question = FactoryGirl.create(:question)
+      old_long_id = question.long_id
+      question.update(title: 'updated')
+
+      question = Question.find(question.id)
+      expect(question.title).to eq('updated')
+      expect(question.long_id).to eq(old_long_id)
+    end
+  end
+
   describe '.all_for' do
     it 'gets all the questions made by a specified user' do
       user = FactoryGirl.create(:user)
