@@ -1,4 +1,8 @@
 <h2><%= @question.title %></h2>
+<p class="shareable-link">
+  Shareable Link:
+  <%= link_to @shareable_link, @shareable_link %>
+</p>
 <%= link_to 'Edit Question', edit_question_path(@question), class: 'button' %>
 <%= button_to "Delete Question",
               question_path(@question),

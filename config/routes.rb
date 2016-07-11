@@ -8,5 +8,8 @@ Rails.application.routes.draw do
       resource :markdown, only: [:create], controller: 'markdown'
     end
   end
+
   resources :questions
+
+  resources :answer_questions, only: [:show]
 end
