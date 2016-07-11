@@ -45,4 +45,13 @@ describe Question, type: :model do
       end
     end
   end
+
+  describe '#shareable_link' do
+    it 'returns a shareable link for the question' do
+      question = FactoryGirl.create(:question)
+
+      expect(question.shareable_link)
+            .to eq("/answer_questions/#{question.long_id}")
+    end
+  end
 end

@@ -5,7 +5,6 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
   validates :body, presence: true
-  validates :long_id, presence: true
 
   before_validation(on: :create) do
     self.long_id = SecureRandom.hex
@@ -17,5 +16,9 @@ class Question < ActiveRecord::Base
     else
       []
     end
+  end
+
+  def shareable_link
+    "/answer_questions/#{long_id}"
   end
 end

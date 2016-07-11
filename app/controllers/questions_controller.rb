@@ -7,6 +7,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @shareable_link = "#{request.protocol}"\
+                      "#{request.host}#{@question.shareable_link}"
   end
 
   def new
