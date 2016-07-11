@@ -12,6 +12,11 @@ class QuestionBodyInput extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+    let originalBody = $('#original_body').val();
+    this.setState({ body: originalBody });
+  }
+
   handleChange(event) {
     let updatedBody = event.target.value;
     this.setState({ body: updatedBody });
