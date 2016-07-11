@@ -12,8 +12,8 @@ feature 'create a new question', %{
   #     a success message and is taken to the question show page
   # [X] If a user enters invalid information, they see an error message with
   #     with information about what to fix
-  # [ ] The user can enter markdown in the question body text
-  # [ ] The user can preview their formatted question as they type
+  # [X] The user can enter markdown in the question body text
+  # [X] The user can preview their formatted question as they type
 
   let(:user) { FactoryGirl.create(:user) }
   let(:question) { FactoryGirl.attributes_for(:question) }

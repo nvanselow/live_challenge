@@ -8,5 +8,5 @@ Rails.application.routes.draw do
       resource :markdown, only: [:create], controller: 'markdown'
     end
   end
-  resources :questions, only: [:index, :show, :new, :create]
+  resources :questions, only: [:index, :show, :new, :create, :edit, :update]
 end
