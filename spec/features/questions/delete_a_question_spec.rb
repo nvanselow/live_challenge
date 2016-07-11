@@ -6,7 +6,7 @@ feature 'delete a question', %{
   So that it is no longer in my list
 } do
   let(:user) { FactoryGirl.create(:user) }
-  let(:question) { FactoryGirl.create(:question) }
+  let(:question) { FactoryGirl.create(:question, user: user) }
 
   before do
     sign_in_as(user)
