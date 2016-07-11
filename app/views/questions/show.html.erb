@@ -1,5 +1,10 @@
 <h2><%= @question.title %></h2>
 <%= link_to 'Edit Question', edit_question_path(@question), class: 'button' %>
+<%= button_to "Delete Question",
+              question_path(@question),
+              data: { confirm: "Are you sure? This is not reversible!" },
+              method: :delete,
+              class: 'button alert' %>
 
 <p>
   <%= @question.body %>
