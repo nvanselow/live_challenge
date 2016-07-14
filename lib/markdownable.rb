@@ -24,21 +24,22 @@ module Markdownable
   private
 
   def markdown
-    @markdown ||= Redcarpet::Markdown.new(HTMLWithRouge, fenced_code_blocks: true, autolink: true, space_after_headers: true)
+    @markdown ||= Redcarpet::Markdown.new(OPTIONS)
   end
 end
 
 class HTMLWithPygments < Redcarpet::Render::HTML
   def block_code(code, lang)
     lang = lang && lang.split.first || "text"
-    output = add_code_tags(
+    add_code_tags(
       Pygmentize.process(code, lang), lang
     )
   end
 
   def add_code_tags(code, lang)
-    code = code.sub(/<pre>/,'<div class="lang">' + lang + '</div><pre><code class="' + lang + '">')
-    code = code.sub(/<\/pre>/,"</code></pre>")
+    code = code.sub(/<pre>/,'<div class="lang">' + lang +
+                    '</div><pre><code class="' + lang + '">')
+    code.sub(/<\/pre>/,"</code></pre>")
   end
 end
 
