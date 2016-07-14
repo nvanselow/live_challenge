@@ -1,5 +1,6 @@
 require 'redcarpet'
-require_relative 'renderers/html_with_pygments'
+require 'rouge'
+require 'rouge/plugins/redcarpet'
 
 module Markdownable
   OPTIONS = {
@@ -16,17 +17,31 @@ module Markdownable
     disable_indented_code_blocks: true
   }
 
-  def parse_markdown(text)
-    markdown.render(text)
+  def render(text)
+    markdown.render(text).html_safe
   end
 
   private
 
-  def renderer
-    @renderer ||= Redcarpet::Render::HTML.new(OPTIONS)
+  def markdown
+    @markdown ||= Redcarpet::Markdown.new(HTMLWithRouge, fenced_code_blocks: true, autolink: true, space_after_headers: true)
+  end
+end
+
+class HTMLWithPygments < Redcarpet::Render::HTML
+  def block_code(code, lang)
+    lang = lang && lang.split.first || "text"
+    output = add_code_tags(
+      Pygmentize.process(code, lang), lang
+    )
   end
 
-  def markdown
-    @markdown ||= Redcarpet::Markdown.new(HtmlWithPygments, EXTENSIONS)
+  def add_code_tags(code, lang)
+    code = code.sub(/<pre>/,'<div class="lang">' + lang + '</div><pre><code class="' + lang + '">')
+    code = code.sub(/<\/pre>/,"</code></pre>")
   end
+end
+
+class HTMLWithRouge < Redcarpet::Render::HTML
+  include Rouge::Plugins::Redcarpet
 end

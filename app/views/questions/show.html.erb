@@ -3,13 +3,16 @@
   Shareable Link:
   <%= link_to @shareable_link, @shareable_link %>
 </p>
-<%= link_to 'Edit Question', edit_question_path(@question), class: 'button' %>
+<%= link_to 'Edit Question', edit_question_path(@question.id), class: 'button' %>
 <%= button_to "Delete Question",
-              question_path(@question),
+              question_path(@question.id),
               data: { confirm: "Are you sure? This is not reversible!" },
               method: :delete,
               class: 'button alert' %>
 
-<p>
+
+
+<input type="hidden" id="question_body" value="<%= @question.body_raw %>" />
+<div id="react_question_body">
   <%= @question.body %>
-</p>
+</div>

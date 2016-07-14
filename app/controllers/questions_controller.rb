@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = MarkdownQuestion.new(params[:id])
     @shareable_link = "#{request.protocol}"\
                       "#{request.host}#{@question.shareable_link}"
   end
