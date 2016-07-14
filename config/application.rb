@@ -34,5 +34,7 @@ module LiveChallenge
       host: ENV['ACTION_MAILER_DEFAULT_HOST'],
       port: 3000
     }
+
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

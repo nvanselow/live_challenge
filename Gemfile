@@ -11,7 +11,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'carrierwave'
 gem 'redcarpet'
-gem 'pygments.rb'
+# gem 'pygmentize'
+gem 'rouge'
 gem 'capybara-webkit'
 
 group :development, :test do
