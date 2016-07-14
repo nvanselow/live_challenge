@@ -6,7 +6,7 @@ feature 'edit a question with react component', %{
   So that I can preview my question in processed markdown
 }, js: true do
   let(:user) { FactoryGirl.create(:user) }
-  let(:question) { FactoryGirl.create(:question) }
+  let(:question) { FactoryGirl.create(:question, user: user) }
 
   before do
     sign_in_as(user)
