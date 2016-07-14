@@ -24,7 +24,7 @@ module Markdownable
   private
 
   def markdown
-    @markdown ||= Redcarpet::Markdown.new(OPTIONS)
+    @markdown ||= Redcarpet::Markdown.new(HTMLWithRouge, OPTIONS)
   end
 end
 
