@@ -59,4 +59,13 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :body)
   end
+
+  def check_question_owner
+    @question = Question.find(params[:id])
+
+    if(@question.user != current_user)
+      flash[:alert] = 'You do not have permission to do that.'
+      redirect_to root_path
+    end
+  end
 end
