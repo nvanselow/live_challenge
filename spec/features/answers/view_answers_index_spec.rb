@@ -23,7 +23,7 @@ feature 'view questions index', %{
   scenario 'answers can be seen by question owner even if set to private' do
     private_answer = FactoryGirl.create(:answer, private_answer: true)
 
-    visit question_path(question)
+    visit question_path(private_answer.question)
 
     expect_answer(private_answer)
   end

@@ -1,7 +1,7 @@
 <h2><%= @question.title %></h2>
 <p class="shareable-link">
   Shareable Link:
-  <%= link_to @shareable_link, @shareable_link %>
+  <%= link_to @question.shareable_link, @question.shareable_link %>
 </p>
 <%= link_to 'Edit Question', edit_question_path(@question.id), class: 'button' %>
 <%= button_to "Delete Question",
@@ -14,3 +14,20 @@
 <div id="react_question_body">
   <%= @question.body %>
 </div>
+
+<h3>Answers</h3>
+<% @answers.each do |answer| %>
+  <div class="answer">
+    <div class="student">
+      Student: <%= answer.name %>
+    </div>
+    <%= answer.body %>
+    <div class="private-status">
+      <% if answer.private_answer %>
+        This answer is private
+      <% else %>
+        This answer is public
+      <% end %>
+    </div>
+  </div>
+<% end %>
