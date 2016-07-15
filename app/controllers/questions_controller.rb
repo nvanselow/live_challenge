@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_question_owner, only: [:show, :edit, :update, :destroy]
 
   def index
     @questions = Question.all_for(current_user)
