@@ -3,3 +3,12 @@
 <p>
   <%= @question.body %>
 </p>
+
+<h3>Answer the Question</h3>
+
+<%= form_for @answer do |f| %>
+  <%= f.label :body, 'Answer' %>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Submit Answer' %>
+<% end %>

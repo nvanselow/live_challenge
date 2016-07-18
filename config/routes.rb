@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :questions
-
   resources :answer_questions, only: [:show]
+  resources :answers, only: [:create]
 end

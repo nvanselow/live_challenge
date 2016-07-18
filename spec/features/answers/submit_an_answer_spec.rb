@@ -17,7 +17,7 @@ feature 'submit an answer for a question', %{
   end
 
   scenario 'student visits a bad link and sees a 404 page' do
-    visit '/answer_question/bad-id'
+    visit '/answer_questions/bad-id'
 
     expect(page.status_code).to eq(404)
   end
