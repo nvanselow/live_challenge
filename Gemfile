@@ -11,9 +11,9 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'carrierwave'
 gem 'redcarpet'
-# gem 'pygmentize'
 gem 'rouge'
 gem 'capybara-webkit'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'capybara'
