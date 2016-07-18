@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import brace from 'brace';
 import AceEditor from 'react-ace';
+import Replit from './Replit';
 
 import 'brace/mode/ruby';
 import 'brace/theme/monokai';
@@ -8,6 +9,16 @@ import 'brace/theme/monokai';
 class CodeEditor extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentCode: ''
+    }
+
+    this.updateCode = this.updateCode.bind(this);
+  }
+
+  updateCode(value) {
+    this.setState({ currentCode: value });
   }
 
   render() {
@@ -18,15 +29,25 @@ class CodeEditor extends Component {
       editor = <AceEditor mode="ruby"
                           theme="monokai"
                           name="code-editor"
-                          height="400px" />;
+                          height="400px"
+                          onChange={this.updateCode}
+                          value={this.state.currentCode} />;
     } else {
       editor = <textarea name="answer[body]" id="answer_body"></textarea>;
     }
 
     return (
-      <div id='answer-body-field'>
-        {editor}
+      <div className="row">
+        <div className="columns small-12 medium-6">
+          <div id='answer-body-field'>
+            {editor}
+          </div>
+        </div>
+        <div className="columns small-12 medium-6">
+          <Replit currentCode={this.state.currentCode} />
+        </div>
       </div>
+
     );
   }
 }
