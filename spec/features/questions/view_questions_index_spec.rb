@@ -69,6 +69,16 @@ feature 'view the questions index', %{
                                  'continuing')
     expect(page).not_to have_content(questions[0].title)
   end
+
+  scenario 'clicking a question in the list goes to the question details' do
+    visit questions_path
+
+    question = questions.first
+    click_link(question.title)
+
+    expect(page).to have_content(question.title)
+    expect(page).to have_content(question.body)
+  end
 end
 
 private
