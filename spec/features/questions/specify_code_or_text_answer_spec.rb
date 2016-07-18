@@ -35,7 +35,7 @@ feature 'create a code question', %{
 
     visit edit_question_path(question)
 
-    expect(input('#code_based_question')).to be_checked
+    expect(input('#code_based_question_true')).to be_checked
   end
 
   scenario 'preference for text remains when viewing edit form' do
@@ -43,7 +43,7 @@ feature 'create a code question', %{
 
     visit edit_question_path(question)
 
-    expect(input('#text_based_question')).to be_checked
+    expect(input('#text_based_question_false')).to be_checked
   end
 end
 
