@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
     @question = MarkdownQuestion.new(params[:id])
     @shareable_link = "#{request.protocol}"\
                       "#{request.host}#{@question.shareable_link}"
+    @answers = @question.question.answers.order(created_at: :desc)
   end
 
   def new
@@ -62,7 +63,7 @@ class QuestionsController < ApplicationController
   def check_question_owner
     @question = Question.find(params[:id])
 
-    if @question.user != current_user
+    if(@question.user != current_user)
       flash[:alert] = 'You do not have permission to do that.'
       redirect_to root_path
     end

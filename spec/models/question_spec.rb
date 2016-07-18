@@ -8,6 +8,7 @@ describe Question, type: :model do
   it { should_not have_valid(:body).when('', nil) }
 
   it { should belong_to(:user) }
+  it { should have_many(:answers).dependent(:destroy) }
 
   describe 'add_long_id' do
     it 'adds a unique long id before the question is created' do

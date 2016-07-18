@@ -10,9 +10,33 @@
               method: :delete,
               class: 'button alert' %>
 
-
-
 <input type="hidden" id="question_body" value="<%= @question.body_raw %>" />
 <div id="react_question_body">
   <%= @question.body %>
 </div>
+
+<h3>Answers</h3>
+
+<% if @answers.count == 0 %>
+  <p>
+    There are currently no answers. Send out the link to allow students
+    to answer this question.
+  </p>
+  <%= link_to @shareable_link, @shareable_link %>
+<% end %>
+
+<% @answers.each do |answer| %>
+  <div class="answer">
+    <div class="student">
+      Student: <%= answer.name %>
+    </div>
+    <%= answer.body %>
+    <div class="private-status">
+      <% if answer.private_answer %>
+        This answer is private
+      <% else %>
+        This answer is public
+      <% end %>
+    </div>
+  </div>
+<% end %>
