@@ -16,6 +16,15 @@
 </div>
 
 <h3>Answers</h3>
+
+<% if @answers.count == 0 %>
+  <p>
+    There are currently no answers. Send out the link to allow students
+    to answer this question.
+  </p>
+  <%= link_to @shareable_link, @shareable_link %>
+<% end %>
+
 <% @answers.each do |answer| %>
   <div class="answer">
     <div class="student">

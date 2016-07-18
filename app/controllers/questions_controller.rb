@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
     @question = MarkdownQuestion.new(params[:id])
     @shareable_link = "#{request.protocol}"\
                       "#{request.host}#{@question.shareable_link}"
-    @answers = @question.question.answers
+    @answers = @question.question.answers.order(created_at: :desc)
   end
 
   def new
