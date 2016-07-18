@@ -11,9 +11,8 @@ feature 'submit an answer for a question', %{
 
 
   scenario 'student visits a bad link and sees a 404 page' do
-    visit '/answer_questions/bad-id'
-
-    expect(page.status_code).to eq(404)
+    expect { visit '/answer_questions/bad-id' }.
+      to raise_error(ActionController::RoutingError)
   end
 
   context 'student visits a valid question link' do
