@@ -41,7 +41,9 @@ class QuestionBodyInput extends Component {
         </div>
         <div className='columns hide-for-small-only medium-6'>
           <p>Preview:</p>
-          <Markdown source={this.state.body} options={markdown_options} />
+          <div className="body-preview">
+            <Markdown source={this.state.body} options={markdown_options} />
+          </div>
         </div>
       </div>
     );
