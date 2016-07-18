@@ -3,3 +3,13 @@
 <p>
   <%= @question.body %>
 </p>
+
+<h3>Answer the Question</h3>
+<%= render 'application/errors' %>
+
+<%= form_for [@question, @answer] do |f| %>
+  <%= f.label :body, 'Answer' %>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Submit Answer' %>
+<% end %>

@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end
