@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = MarkdownQuestion.new(params[:id])
-    host = if(request.host == 'localhost')
+    host = if request.host == 'localhost'
              "#{request.host}:#{request.port}"
            else
              request.host
