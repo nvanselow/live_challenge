@@ -9,7 +9,10 @@
 
 <%= form_for [@question, @answer] do |f| %>
   <%= f.label :body, 'Answer' %>
-  <%= f.text_area :body %>
+  <%= hidden_field_tag :code_question, @question.code_question %>
+  <div id='answer'>
+    <%= f.text_area :body %>
+  </div>
 
-  <%= f.submit 'Submit Answer' %>
+  <%= f.submit 'Submit Answer', class: 'button' %>
 <% end %>

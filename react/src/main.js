@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import QuestionBodyInput from './QuestionBodyInput';
 import DisplayBody from './DisplayBody';
+import CodeEditor from './CodeEditor';
 
 $(function() {
   let app = document.getElementById('app');
@@ -28,6 +29,15 @@ $(function() {
     ReactDOM.render(
       <DisplayBody />,
       questionBody
+    );
+  }
+
+  let codeAnswer = document.getElementById('answer')
+
+  if(codeAnswer){
+    ReactDOM.render(
+      <CodeEditor />,
+      codeAnswer
     );
   }
 });
