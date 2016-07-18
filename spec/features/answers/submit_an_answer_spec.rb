@@ -8,8 +8,6 @@ feature 'submit an answer for a question', %{
   let!(:question) { FactoryGirl.create(:question) }
   let(:answer) { FactoryGirl.attributes_for(:answer) }
 
-
-
   scenario 'student visits a bad link and sees a 404 page' do
     expect { visit '/answer_questions/bad-id' }.
       to raise_error(ActionController::RoutingError)
