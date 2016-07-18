@@ -8,8 +8,13 @@ class QuestionsController < ApplicationController
 
   def show
     @question = MarkdownQuestion.new(params[:id])
+    host = if request.host == 'localhost'
+             "#{request.host}:#{request.port}"
+           else
+             request.host
+           end
     @shareable_link = "#{request.protocol}"\
-                      "#{request.host}#{@question.shareable_link}"
+                      "#{host}#{@question.shareable_link}"
     @answers = @question.question.answers.order(created_at: :desc)
   end
 
