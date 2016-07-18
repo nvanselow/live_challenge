@@ -1,4 +1,7 @@
 <h2><%= @question.title %></h2>
+
+<%= render inline: @question.code_question %>
+
 <p class="shareable-link">
   Shareable Link:
   <%= link_to @shareable_link, @shareable_link %>

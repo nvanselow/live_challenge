@@ -17,4 +17,12 @@ class MarkdownQuestion
   def body_raw
     @question.body
   end
+
+  def code_question
+    if @question.code_question
+      '<p><i class="fa fa-file-code-o"></i> Code-Based Answers</p>'
+    else
+      '<p><i class="fa fa-file-text-o"></i> Text-Based Answers</p>'
+    end
+  end
 end

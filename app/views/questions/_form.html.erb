@@ -4,6 +4,14 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
 
+  <div id="question-type">
+    <%= f.radio_button :code_question, false %>
+    <%= f.label :code_question_true, 'Text-Based Answers' %>
+
+    <%= f.radio_button :code_question, true %>
+    <%= f.label :code_question_false, 'Code-Based Answers' %>
+  </div>
+
   <%= hidden_field_tag :original_body, @question.body %>
   <div id="react_question_body_input">
     <%= f.label :body %>
