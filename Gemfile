@@ -23,6 +23,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'quiet_assets'
+  gem 'dotenv-rails'
 end
 
 group :test do
