@@ -7,14 +7,16 @@ feature 'create a code question', %{
 } do
   let(:user) { FactoryGirl.create(:user) }
   let(:question) { FactoryGirl.attributes_for(:question) }
+
   before do
     sign_in_as(user)
-    new_question_path
+    visit new_question_path
   end
 
   scenario 'user selects text-based question' do
-    choose('Text-Based Answer')
+    choose('question_code_question_false')
 
+    fill_in_question_form_with(question)
     click_button('Save Question')
 
     expect(page).to have_content(question[:title])
@@ -22,8 +24,9 @@ feature 'create a code question', %{
   end
 
   scenario 'user selects code-based question' do
-    choose('Code-Based Answer')
+    choose('question_code_question_true')
 
+    fill_in_question_form_with(question)
     click_button('Save Question')
 
     expect(page).to have_content(question[:title])
@@ -31,23 +34,23 @@ feature 'create a code question', %{
   end
 
   scenario 'preference for code remains when viewing edit form' do
-    question = FactoryGirl.create(:code_question)
+    question = FactoryGirl.create(:code_question, user: user)
 
     visit edit_question_path(question)
 
-    expect(input('#code_based_question_true')).to be_checked
+    expect(find('#question_code_question_true')).to be_checked
   end
 
   scenario 'preference for text remains when viewing edit form' do
-    question = FactoryGirl.create(:question)
+    question = FactoryGirl.create(:question, user: user)
 
     visit edit_question_path(question)
 
-    expect(input('#text_based_question_false')).to be_checked
+    expect(find('#question_code_question_false')).to be_checked
   end
 end
 
-def fill_in_question_form
+def fill_in_question_form_with(question)
   fill_in('Title', with: question[:title])
   fill_in('Body', with: question[:body])
 end
