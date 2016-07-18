@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :code_question)
   end
 
   def check_question_owner
