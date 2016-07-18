@@ -11,7 +11,7 @@ class Api::V1::ReplitController < ApplicationController
 
   # method from Repl.it API docs
   # https://repl.it/site/blog/api-docs
-  def gen_token()
+  def gen_token
     digest = OpenSSL::Digest.new('sha256')
     secret = ENV['REPLIT_SECRET_KEY']
     time_created = Time.now.to_i * 1000 # convert to ms
