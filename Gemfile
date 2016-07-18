@@ -12,7 +12,6 @@ gem 'foundation-rails'
 gem 'carrierwave'
 gem 'redcarpet'
 gem 'rouge'
-gem 'capybara-webkit'
 gem 'font-awesome-rails'
 
 group :development, :test do
@@ -31,6 +30,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'orderly'
+  gem 'capybara-webkit'
 end
 
 group :production do
