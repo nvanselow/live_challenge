@@ -1,18 +1,23 @@
-<h2><%= @question.title %></h2>
+<div class="answer-question">
+  <h2><%= @question.title %></h2>
 
-<p>
-  <%= @question.body %>
-</p>
-
-<h3>Answer the Question</h3>
-<%= render 'application/errors' %>
-
-<%= form_for [@question, @answer] do |f| %>
-  <%= f.label :body, 'Answer' %>
-  <%= hidden_field_tag :code_question, @question.code_question %>
-  <div id='answer'>
-    <%= f.text_area :body %>
+  <input type="hidden" id="question_body" value="<%= @question.body %>" />
+  <div id="react_question_body">
+    <p>
+      <%= @question.body %>
+    </p>
   </div>
 
-  <%= f.submit 'Submit Answer', class: 'button' %>
-<% end %>
+  <h3>Answer the Question</h3>
+  <%= render 'application/errors' %>
+
+  <%= form_for [@question, @answer] do |f| %>
+    <%= f.label :body, 'Answer' %>
+    <%= hidden_field_tag :code_question, @question.code_question %>
+    <div id='answer'>
+      <%= f.text_area :body %>
+    </div>
+
+    <%= f.submit 'Submit Answer', class: 'button' %>
+  <% end %>
+</div>
