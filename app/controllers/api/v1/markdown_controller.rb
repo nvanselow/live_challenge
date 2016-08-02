@@ -1,6 +1,6 @@
 require 'markdownable'
 
-class Api::V1::MarkdownController < ApplicationController
+class Api::V1::MarkdownController < ApiController
   include Markdownable
 
   def create
