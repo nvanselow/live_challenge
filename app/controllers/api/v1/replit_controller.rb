@@ -2,7 +2,7 @@ require 'openssl'
 require 'date'
 require 'base64'
 
-class Api::V1::ReplitController < ApplicationController
+class Api::V1::ReplitController < ApiController
   def show
     render json: gen_token, status: :ok
   end

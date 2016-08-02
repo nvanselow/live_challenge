@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import QuestionBodyInput from './QuestionBodyInput';
 import DisplayBody from './DisplayBody';
 import CodeEditor from './CodeEditor';
+import Answers from './Answers';
 
 $(function() {
   let app = document.getElementById('app');
@@ -38,6 +39,17 @@ $(function() {
     ReactDOM.render(
       <CodeEditor />,
       codeAnswer
+    );
+  }
+
+  let answers = document.getElementById('answers');
+
+  if(answers){
+    let questionId = $('#question_id').val();
+
+    ReactDOM.render(
+      <Answers questionId={questionId} />,
+      answers
     );
   }
 });
