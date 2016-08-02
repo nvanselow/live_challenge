@@ -31,8 +31,6 @@ class Markdown extends Component {
     this.setState({ formattedHtml: data.html })
   }
 
-<input type="hidden" id="membership_current" value="true" />
-
   render() {
     if(!this.state.formattedHtml){
       return (
