@@ -13,6 +13,7 @@
               method: :delete,
               class: 'button alert' %>
 
+<input type="hidden" id="question_id" value="<%= @question.id %>" />
 <input type="hidden" id="question_body" value="<%= @question.body_raw %>" />
 <div id="react_question_body">
   <%= @question.body %>
@@ -26,20 +27,22 @@
     to answer this question.
   </p>
   <%= link_to @shareable_link, @shareable_link %>
-<% end %>
-
-<% @answers.each do |answer| %>
-  <div class="answer">
-    <div class="student">
-      Student: <%= answer.name %>
-    </div>
-    <%= answer.body %>
-    <div class="private-status">
-      <% if answer.private_answer %>
-        This answer is private
-      <% else %>
-        This answer is public
-      <% end %>
-    </div>
+<% else %>
+  <div id="answers">
+    <% @answers.each do |answer| %>
+      <div class="answer">
+        <div class="student">
+          Student: <%= answer.name %>
+        </div>
+        <%= answer.body %>
+        <div class="private-status">
+          <% if answer.private_answer %>
+            This answer is private
+          <% else %>
+            This answer is public
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 <% end %>

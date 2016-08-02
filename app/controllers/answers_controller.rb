@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
     @answer.question = @question
 
     if @question.code_question
-      @answer.body = '```ruby\n' + @answer.body + '\n```'
+      @answer.body = "```ruby \n" + @answer.body + " \n```"
     end
 
     if @answer.save
