@@ -26,12 +26,20 @@ class CodeEditor extends Component {
     let code_question = $('#code_question').val();
 
     if(code_question){
-      editor = <AceEditor mode="ruby"
-                          theme="monokai"
-                          name="code-editor"
-                          height="400px"
-                          onChange={this.updateCode}
-                          value={this.state.currentCode} />;
+      editor = (
+        <div>
+          <input type="hidden"
+                 name="answer[body]"
+                 id="answer_body"
+                 value={this.state.currentCode} />
+          <AceEditor mode="ruby"
+                     theme="monokai"
+                     name="code-editor"
+                     height="400px"
+                     onChange={this.updateCode}
+                     value={this.state.currentCode} />
+        </div>
+      );
     } else {
       editor = <textarea name="answer[body]" id="answer_body"></textarea>;
     }
